@@ -1,3 +1,4 @@
+
 name: Build Enmity and Inject Rosiecord
 on:
   push:
@@ -5,20 +6,11 @@ on:
 
 jobs:
   build:
+
     name: Build Enmity and Inject Rosiecord
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Ensure main utils are installed
-        id: core
-        run: brew install coreutils ldid
-
-      - name: Retrieve version
-        id: version
-        run: |
-          cd ./ipas
-          echo "__DISCORD_VERSION=$(ls | grep Discord | sed -e s/[^0-9.]//g | sed -e s/[/.+?\./]//g)" >> $GITHUB_OUTPUT 
 
       - name: Actions Status Discord Started
         uses: sarisia/actions-status-discord@v1.13.0
@@ -29,16 +21,24 @@ jobs:
           nodetail: true
           title: Building a new version of `Rosiecord`...
           description: | 
-            Version `${{ steps.version.outputs.__DISCORD_VERSION }}` is being build...
-            I will send another message whenever its finsihed
+            I will send another message once its done
           url: https://github.com/SerStars/rosiecord/releases
           content: <@861631850681729045>
           color: 0x000001
 
+      - name: Ensure main utils are installed
+        id: core
+        run: brew install coreutils ldid
+
       - name: Run Main Node Script to Patch Rosiecord
         id: build
-        run: node ./index.js 
+        run: node ./index.js
 
+      - name: Retrieve version
+        id: version
+        run: |
+          cd ./ipas
+          echo "__DISCORD_VERSION=$(ls | grep Discord | sed -e s/[^0-9.]//g | sed -e s/[/.+?\./]//g)" >> $GITHUB_OUTPUT 
       - name: Create release
         uses: marvinpinto/action-automatic-releases@latest
         with:
@@ -56,7 +56,7 @@ jobs:
         with:
           nodetail: true
           title: A new version of `Rosiecord` is ready!
-          description: |
+          description: | 
             Version `${{ steps.version.outputs.__DISCORD_VERSION }}`
             Click [here](https://github.com/SerStars/rosiecord/releases/latest) to download
           url: https://github.com/SerStars/rosiecord/releases
