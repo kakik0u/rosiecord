@@ -3,6 +3,9 @@ name: Build Enmity and Inject Rosiecord
 on:
   push:
   workflow_dispatch:
+  schedule:
+    # weekly (every monday)
+    - cron: '0 0 * * 1'
 
 jobs:
   build:
@@ -32,7 +35,7 @@ jobs:
 
       - name: Run Main Node Script to Patch Rosiecord
         id: build
-        run: node ./index.js
+        run: sh ./script.sh
 
       - name: Retrieve version
         id: version
