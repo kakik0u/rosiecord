@@ -25,9 +25,9 @@ jobs:
           nodetail: true
           title: Building a new version of `Rosiecord`...
           description: | 
-            I will send another message once its done
+            I will send another message once its finished
           url: https://github.com/SerStars/rosiecord/releases
-          content: <@861631850681729045>
+          content: Building!
           color: 0x000001
 
       - name: Ensure main utils are installed
@@ -64,5 +64,5 @@ jobs:
             Version `${{ steps.version.outputs.__DISCORD_VERSION }}`
             Click [here](https://github.com/SerStars/rosiecord/releases/latest) to download
           url: https://github.com/SerStars/rosiecord/releases
-          content: <@861631850681729045>
+          content: Ready!
           color: 0x000001
