@@ -4,9 +4,8 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    # weekly (every monday)
-    - cron: '0 */5 * * *'
-    - cron: '0 17 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   build:
