@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 logger = logging.getLogger()
 
 # Define base directory
-base_directory = os.getcwd()
+base_directory = os.getenv('BASE_DIRECTORY', os.getcwd())
 
 # Check if a path exists
 def path_exists(path):
