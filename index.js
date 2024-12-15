@@ -139,16 +139,16 @@ const EntryPoint = async (index, ipaName) => {
             });
             break;
         }
-        case 3: {
-            const M = new Main('Tweak', "Optional Variations");
-            await M.Main(async () => {
-                await new Inject("Flowercord", 'Flowercord', false, "ls Patches/Optional").run(M, async (ipaName, patchName) => {
-                    await Shell.run(`Azule/azule -U -i Dist/${ipaName}.ipa -o Dist -f $PWD/Patches/Optional/${patchName} -v & wait $!`);
-                    await Shell.run(`mv Dist/${ipaName}+${patchName}.ipa Dist/${ipaName}+Flowercord.ipa`);
-                });
-            });
-            break;
-        }
+        // case 3: {
+        //     const M = new Main('Tweak', "Optional Variations");
+        //     await M.Main(async () => {
+        //         await new Inject("Flowercord", 'Flowercord', false, "ls Patches/Optional").run(M, async (ipaName, patchName) => {
+        //             await Shell.run(`Azule/azule -U -i Dist/${ipaName}.ipa -o Dist -f $PWD/Patches/Optional/${patchName} -v & wait $!`);
+        //             await Shell.run(`mv Dist/${ipaName}+${patchName}.ipa Dist/${ipaName}+Flowercord.ipa`);
+        //         });
+        //     });
+        //     break;
+        // }
         default:
             break;
     }
@@ -277,7 +277,7 @@ const main = async () => {
         });
     }
     await D.logDivider();
-    await Init.PackageTweak("Flowercord", "gmake package", "Optional");
+    // await Init.PackageTweak("Flowercord", "gmake package", "Optional");
     await Init.PackageTweak("SideloadFix", "gmake package", "Required");
     await Init.InitializeAzule();
     await D.logDivider();
