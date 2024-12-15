@@ -3,9 +3,9 @@ name: Build Enmity and Inject Rosiecord
 on:
   push:
   workflow_dispatch:
-  schedule:
-    - cron: '0 17 * * *'
-    - cron: '0 12 * * *'
+  # schedule:
+  #   - cron: '0 17 * * *'
+  #   - cron: '0 12 * * *'
 
 jobs:
   build:
